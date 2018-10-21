@@ -31,9 +31,9 @@ class BlogController extends Controller
     {
         $user = Auth::user();
         if ($user){
-            $blogs =  Blog::where('user_id', $user->id)->paginate(config('constants.item_per_page'));
+            $blogs =  Blog::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(config('constants.item_per_page'));
         } else {
-            $blogs =  Blog::where('status', 2)->paginate(config('constants.item_per_page'));
+            $blogs =  Blog::where('status', 2)->orderBy('id', 'desc')->paginate(config('constants.item_per_page'));
         }
         
         $data = $blogs->toArray();

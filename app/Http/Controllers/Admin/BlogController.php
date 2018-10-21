@@ -22,7 +22,7 @@ class BlogController extends Controller
     
     public function blog_list()
     {
-        $blogs =  Blog::paginate(config('constants.item_per_page'));
+        $blogs =  Blog::orderBy('id', 'desc')->paginate(config('constants.item_per_page'));
         $data = $blogs->toArray();
         $blog_array = array();
         $statuses =  config('constants.statuses');
